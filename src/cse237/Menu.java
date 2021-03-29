@@ -20,11 +20,15 @@ public class Menu {
 	}
 
 	private void runMenu() {
-		this.displayMainMenu();
-		
-		int selectedOption = this.getUserInput();
-		
-		this.processMainMenu(selectedOption);
+		int selectedOption = 0;
+		while(selectedOption != 3) {
+			this.displayMainMenu();
+			
+			
+			selectedOption = this.getUserInput();
+			
+			this.processMainMenu(selectedOption);
+		}
 		this.keyboardIn.close();
 	}
 
@@ -63,7 +67,16 @@ public class Menu {
 			System.out.println("Viewing grades");
 		}
 		else if(teacherOption == 3) {
-			System.out.println("Editing");
+			quizManager.displayQuizzes();
+			System.out.println("Please select a quiz to edit: ");
+			int selectedQuizNumber = getUserInput();
+			Quiz selectedQuiz = quizManager.getQuiz(selectedQuizNumber);
+			System.out.println("Please enter the question prompt: ");
+			String enteredPrompt = keyboardIn.nextLine();
+			System.out.println("Please enter the correct answer: ");
+			String enteredAnswer = keyboardIn.nextLine();
+			Question questionToBeAdded = new Question(enteredPrompt, enteredAnswer);
+			selectedQuiz.addQuestion(questionToBeAdded);
 		}
 	}
 
@@ -92,9 +105,12 @@ public class Menu {
 		
 		System.out.println("1. Teacher Menu");
 		System.out.println("2. Student Menu");
+		System.out.println("3. Quit");
 	}
 	
 	private int getUserInput() {
-		return keyboardIn.nextInt();
+		int selected = keyboardIn.nextInt();
+		String notUsed = keyboardIn.nextLine();
+		return selected;
 	}
 }

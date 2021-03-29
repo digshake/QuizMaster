@@ -13,4 +13,8 @@ public class Question {
 	public boolean checkAnswer(String potentialAnswer) {
 		return potentialAnswer.equals(correctAnswer);
 	}
+	
+	public String getPrompt() {
+		return this.prompt;
+	}
 }

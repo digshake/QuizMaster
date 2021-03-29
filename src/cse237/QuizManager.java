@@ -14,7 +14,17 @@ public class QuizManager {
 		this.quizzes.add(addMe);
 	}
 	
+	public void displayQuizzes() {
+		for(int i = 0; i < quizzes.size(); i++) {
+			System.out.println(i + 1 + ": " + quizzes.get(i).getName());
+		}
+	}
+	
 	public int getNumberOfQuizzes() {
 		return this.quizzes.size();
+	}
+	
+	public Quiz getQuiz(int index) {
+		return this.quizzes.get(index);
 	}
 }
