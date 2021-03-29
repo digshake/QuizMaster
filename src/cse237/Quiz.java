@@ -20,5 +20,9 @@ public class Quiz {
 		return questions.size();
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
 	
 }
